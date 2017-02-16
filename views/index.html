@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <center>
+        <h1>loading...</h1>
+    </center>
+
+
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js" integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
+        crossorigin="anonymous"></script>
+
+        <script>
+            $(function () {
+              console.log("loading..")
+                $.get('/post-now', function (post) {
+                    $('h1').text(post.title)
+                    var height = $(document).height() - ($('h1').height() + 50)
+                    var width = $(document).width() - 10
+                    var style = "width: auto; max-width: " + width + "px; height: " + height + "px; max-height: " + height + "px;"
+                    console.log(style)
+                    $('center').append('<img src="' + post.imgurl + '" style="' + style + '">')
+                });
+            });
+        </script>
+        <style>
+          h1 {
+              font-size: 25pt;
+              font-family: verdana;
+              color: white;
+          }
+          body{
+            padding: 0;
+            margin: 0;
+            background-color: black;
+          }
+        </style>
+
+</body>
+
+</html>
